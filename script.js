@@ -57,24 +57,35 @@ function computerPlay(){
 
 
 function playRound(playerSelection,computerSelection){
-    playerSelection=prompt("Rock, Paper or Scissors?");
-    playerSelection=playerSelection.toLowerCase();
+    playerSelection=prompt("Rock, Paper or Scissors?").toLowerCase();
+  
+
+    if (playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"){
+   
+
+  
+  
     if (playerSelection == computerSelection){
-        return `its a tie you both chose ${playerSelection}`;
+        return `its a tie you both chose ${playerSelection} : score ${playerCounter} to ${computerCounter}` ;
     }
 
     else if(playerSelection != computerSelection){
         if((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || playerSelection == "scissors" && computerSelection == "paper"){
             ++playerCounter;
-            return `You won! ${playerSelection} beats ${computerSelection}`;
+            return `You won! ${playerSelection} beats ${computerSelection}: score ${playerCounter} to ${computerCounter}`;
         }
     else{
         ++computerCounter;
-        return `You lost! ${computerSelection} beats ${playerSelection}`;
+        return `You lost! ${computerSelection} beats ${playerSelection}: score ${playerCounter} to ${computerCounter}`;
     }
     }
 
-
+}
+else{
+    prompt("Invalid input! please enter either rock, paper or scissors.");
+    playerCounter = NaN;
+    
+} 
 }
 
 
@@ -86,15 +97,19 @@ for(let i = 0; i < 5; i++){
 }
 
 if (playerCounter > computerCounter){
-    return "You won";
+    return `You won! : final score ${playerCounter} to ${computerCounter}`;
 }
 
-else if (playerCounter == computerCounter){
-    return "Tie";
+else if (playerCounter === computerCounter){
+    return `Tie! : final score ${playerCounter} to ${computerCounter}`;
+}
+
+else if(playerCounter < computerCounter){
+    return `You lost : final score ${playerCounter} to ${computerCounter}`;
 }
 
 else{
-    return "You lost";
+    return "Invalid input! you score was not calculated";
 }
 
 
@@ -103,8 +118,8 @@ else{
 
 
 
-const playerSelection;
-
+ 
+let playerSelection;
 
 const computerSelection = computerPlay();
 
